@@ -1,69 +1,71 @@
-📱—📌——🗂️—×🧠—✅–✅—🎉🛠️📁├──├──├──└──👩‍#💻— 📱 Introduction to Machine Learning — Megaline Plan Recommendation
+# Introduction to Machine Learning - Megaline Plan Recommendation
 
-## 📌 Project Overview
+## Project Overview
 
 This project is part of the **TripleTen Data Science Bootcamp**. The goal is to build a machine learning classification model that recommends one of Megaline's two newer plans — **Smart** or **Ultra** — to subscribers who are still using legacy plans.
 
-The model is trained on behavioral data from subscribers who have already switched, and the objective is to achieve an accuracy of at least **0.75** on the test set.
+The model is trained on behavioral data from subscribers who have already switched, and the objective is to achieve an accuracy of at least **75%** on the test set.
 
 ---
 
-## 🗂️ Dataset
+## Dataset
 
-The following CSV files contain monthly usage data per subscriber:
+**File:** `users_behavior.csv` — 3,214 rows x 5 columns
 
-| File | Description |
-|------|-------------|
-| `megaline_users.csv` | User info and current plan |
-| `megaline_plans.csv` | Plan details (Smart vs Ultra) |
-| `megaline_calls.csv` | Number and duration of calls |
-| `megaline_messages.csv` | Number of text messages sent |
-| `megaline_internet.csv` | Internet traffic used (MB) |
+| Column | Description |
+|--------|-------------|
+| `calls` | Number of calls made |
+| `minutes` | Total call duration (minutes) |
+| `messages` | Number of text messages sent |
+| `mb_used` | Internet traffic used (MB) |
+| `is_ultra` | Target: 1 = Ultra plan, 0 = Smart plan |
 
-**Target variable:** `is_ultra` — 1 if the subscriber uses the Ultra plan, 0 for Smart.
+The data was split into **training**, **validation**, and **test** sets.
 
 ---
 
-## 🧠 Models Explored
+## Models Explored
 
-- Decision Tree Classifier
-- - Random Forest Classifier
-  - - Logistic Regression
-   
-    - Hyperparameter tuning was applied to find the best-performing model configuration.
-   
-    - ---
+| Model | Validation Accuracy |
+|-------|---------------------|
+| Decision Tree | — |
+| Logistic Regression | ~72.3% |
+| **Random Forest** | **~77.4%** |
 
-    ## ✅ Results
+Hyperparameter tuning was applied to `n_estimators` (1–10) to find the best Random Forest configuration.
 
-    The best model achieved an accuracy above the **0.75 threshold** on the test set using a **Random Forest** classifier.
+---
 
-    ---
+## Results
 
-    ## 🛠️ Tech Stack
+**Best model:** Random Forest with `n_estimators=8`
 
-    - Python 3
-    - - Pandas
-      - - Scikit-learn
-        - - Jupyter Notebook
-         
-          - ---
+**Test accuracy: 80.09%** — exceeding the 75% project requirement
 
-          ## 📁 Repository Structure
+---
 
-          ```
-          ├── notebook.ipynb           # Main analysis and model training
-          ├── megaline_users.csv
-          ├── megaline_plans.csv
-          ├── megaline_calls.csv
-          ├── megaline_messages.csv
-          ├── megaline_internet.csv
-          └── README.md
-          ```
+## Tech Stack
 
-          ---
+- Python 3
+- - Pandas
+  - - Scikit-learn
+    - - Jupyter Notebook
+     
+      - ---
 
-          ## 👩‍💻 Author
+      ## Repository Structure
 
-          **Thais Paulino** — Data Analyst transitioning into Data Science
-          [LinkedIn](https://www.linkedin.com/in/thais-paulino-9942a260)
+      ```
+      ├── notebook (1).ipynb       # Main analysis and model training
+      ├── users_behavior.csv       # Dataset (3,214 users)
+      ├── .gitignore
+      └── README.md
+      ```
+
+      ---
+
+      ## Author
+
+      **Thais Paulino** — Data Analyst transitioning into Data Science
+
+      [LinkedIn](https://www.linkedin.com/in/thais-paulino-9942a260)
